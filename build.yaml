@@ -23,5 +23,14 @@ include:
     shield: torabo_tsuki_lp_right
     snippet: "studio-rpc-usb-uart split-central input-trackball input-listener input-split-listener"
     artifact-name: torabo_tsuki_lp_double_ball_right_central
+# 以下個人的に追加
+  - board: bmp_boost # 右トラックボール
+    shield: torabo_tsuki_lp_right
+    snippet: "studio-rpc-usb-uart split-central input-trackball input-listener input-split-listener"
+    artifact-name: torabo_tsuki_lp_trackball_right_central   
+  - board: bmp_boost # 左 トラックパッド
+    shield: torabo_tsuki_lp_left
+    snippet: "studio-rpc-usb-uart input-trackpad-mini input-split"
+    artifact-name: torabo_tsuki_lp_trackpad_left_peripheral
   - board: bmp_boost
     shield: settings_reset
