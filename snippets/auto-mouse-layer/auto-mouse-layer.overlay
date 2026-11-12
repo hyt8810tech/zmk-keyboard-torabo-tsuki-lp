@@ -4,7 +4,7 @@
                        <&zip_temp_layer 1 500>;
 };
 
-/* Key position 58 (left thumb, LSHIFT/LANG1 on layer 0) is used as click on layer 1. */
+/* Key position 37 on S Layout (left thumb, LSHIFT/LANG1 on layer 0) is used as click on layer 1. */
 &zip_temp_layer {
-    excluded-positions = <58>;
+    excluded-positions = <37>;
 };
