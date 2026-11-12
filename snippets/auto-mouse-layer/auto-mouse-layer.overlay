@@ -1,0 +1,10 @@
+/* Activate layer 1 for 500ms while the central pointing device moves. */
+&pointing_listener {
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+                       <&zip_temp_layer 1 500>;
+};
+
+/* Key position 58 (left thumb, LSHIFT/LANG1 on layer 0) is used as click on layer 1. */
+&zip_temp_layer {
+    excluded-positions = <58>;
+};
