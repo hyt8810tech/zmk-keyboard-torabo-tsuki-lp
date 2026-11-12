@@ -1,0 +1,3 @@
+name: split-scroll-scaler
+append:
+  EXTRA_DTC_OVERLAY_FILE: split-scroll-scaler.overlay
