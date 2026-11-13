@@ -1,0 +1,3 @@
+name: trackpad-inertia
+append:
+  EXTRA_CONF_FILE: trackpad-inertia.conf
