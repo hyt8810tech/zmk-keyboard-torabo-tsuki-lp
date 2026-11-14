@@ -16,9 +16,10 @@
 #define WIN    5
 #define WINNAV 6
 
-/* Activate the layer when another key is pressed and released while held, even within tapping-term. */
+/* Decide hold by time only, with a shorter tapping-term than the default 200ms. */
 &lt {
-    flavor = "balanced";
+    flavor = "tap-preferred";
+    tapping-term-ms = <150>;
 };
 
 #if defined(TORABO_TSUKI_LP_KSCAN_4_DIRECTION_SWITCH)
