@@ -150,7 +150,7 @@ EXTRA_TRANS
 
 #if defined(TORABO_TSUKI_LP_INPUT_HIRES_DIAL)
 &{/keymap/layer_0} {
-    sensor-bindings = <&hires_dial_scroll 1 1>;
+    sensor-bindings = <&hires_dial_scroll 3 1>;
 };
 
 &{/keymap/layer_1} {
