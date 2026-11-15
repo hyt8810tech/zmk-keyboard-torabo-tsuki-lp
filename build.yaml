@@ -25,13 +25,23 @@ include:
 #    snippet: "studio-rpc-usb-uart split-central input-trackball input-listener input-split-listener"
 #    artifact-name: torabo_tsuki_lp_double_ball_right_central
 # 以下個人的に追加
-  - board: bmp_boost # 右トラックボール
+# 左トラックパッド構成(ダイヤルに切り替えたためコメントアウト。戻すときは下のダイヤル構成と入れ替える)
+#  - board: bmp_boost # 右トラックボール
+#    shield: torabo_tsuki_lp_right
+#    snippet: "studio-rpc-usb-uart split-central input-trackball input-listener input-split-listener auto-mouse-layer split-scroll-scaler"
+#    artifact-name: torabo_tsuki_lp_trackball_right_central
+#  - board: bmp_boost # 左 トラックパッド
+#    shield: torabo_tsuki_lp_left
+#    snippet: "studio-rpc-usb-uart input-trackpad-mini input-split trackpad-inertia"
+#    artifact-name: torabo_tsuki_lp_trackpad_left_peripheral
+# 左ダイヤル構成
+  - board: bmp_boost # 右トラックボール(左ダイヤルを受け取る)
     shield: torabo_tsuki_lp_right
-    snippet: "studio-rpc-usb-uart split-central input-trackball input-listener input-split-listener auto-mouse-layer split-scroll-scaler"
-    artifact-name: torabo_tsuki_lp_trackball_right_central
-  - board: bmp_boost # 左 トラックパッド
+    snippet: "studio-rpc-usb-uart split-central input-trackball input-listener auto-mouse-layer split-input-hires-dial"
+    artifact-name: torabo_tsuki_lp_trackball_dial_right_central
+  - board: bmp_boost # 左 ダイヤル
     shield: torabo_tsuki_lp_left
-    snippet: "studio-rpc-usb-uart input-trackpad-mini input-split trackpad-inertia"
-    artifact-name: torabo_tsuki_lp_trackpad_left_peripheral
+    snippet: "studio-rpc-usb-uart input-hires-dial"
+    artifact-name: torabo_tsuki_lp_dial_left_peripheral
   - board: bmp_boost
     shield: settings_reset
