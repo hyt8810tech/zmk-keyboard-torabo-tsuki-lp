@@ -95,7 +95,7 @@
 &kp ESC   &kp N1  &kp N2  &kp N3  &kp PLUS                            &kp KP_MULTIPLY  &kp F1  &kp F3   &kp F4   &kp F6
 &kp TAB   &kp N4  &kp N5  &kp N6  &kp MINUS                           &kp FSLH         &kp F2  &kp F5   &kp F10  &kp F7
 &kp CAPS  &kp N7  &kp N8  &kp N9  &kp EQUAL  &trans           &trans  &kp PERCENT      &kp F8  &kp F9   &kp F11  &kp F12
-&trans    &trans  &kp N0  &trans  &trans     &trans           &trans  &trans           &trans  &trans   &trans   &trans
+&trans    &trans  &kp N0  &trans  &kp C_MUTE &trans           &trans  &trans           &trans  &trans   &trans   &trans
 EXTRA_TRANS
             >;
         };
@@ -150,11 +150,11 @@ EXTRA_TRANS
 
 #if defined(TORABO_TSUKI_LP_INPUT_HIRES_DIAL)
 &{/keymap/layer_0} {
-    sensor-bindings = <&hires_dial_scroll 80 1>;
+    sensor-bindings = <&hires_dial_scroll 160 1>;
 };
 
 &{/keymap/layer_1} {
-    sensor-bindings = <&hires_dial_scroll 80 1>;
+    sensor-bindings = <&hires_dial_scroll 160 1>;
 };
 
 &{/keymap/layer_2} {
