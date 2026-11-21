@@ -13,13 +13,13 @@
 #define NUM    2
 #define SYM    3
 #define NAV    4
-#define WIN    5
-#define WINNAV 6
 
 /* Decide hold by time only, with a shorter tapping-term than the default 200ms. */
 &lt {
     flavor = "tap-preferred";
     tapping-term-ms = <150>;
+    /* Re-pressing within 200ms after a tap is always a tap (fast repeated Space for IME conversion). */
+    quick-tap-ms = <200>;
 };
 
 #if defined(TORABO_TSUKI_LP_KSCAN_4_DIRECTION_SWITCH)
@@ -42,17 +42,7 @@
         bt_clear {
             bindings = <&bt BT_CLR>;
             key-positions = <29 30>;
-            layers = <NAV WINNAV>;
-        };
-    };
-
-    /* Windows shortcuts are active only while both NAV and WIN are active. */
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        win_nav {
-            if-layers = <NAV WIN>;
-            then-layer = <WINNAV>;
+            layers = <NAV>;
         };
     };
 
@@ -89,59 +79,38 @@
             >;
         };
 
+        /* Right thumb layer: keys are on the left hand. */
         layer_2 {
             display-name = "Num";
             bindings = <
-&kp ESC   &kp N1  &kp N2  &kp N3  &kp PLUS                            &kp KP_MULTIPLY  &kp F1  &kp F3   &kp F4   &kp F6
-&kp TAB   &kp N4  &kp N5  &kp N6  &kp MINUS                           &kp FSLH         &kp F2  &kp F5   &kp F10  &kp F7
-&kp CAPS  &kp N7  &kp N8  &kp N9  &kp EQUAL  &trans           &trans  &kp PERCENT      &kp F8  &kp F9   &kp F11  &kp F12
-&trans    &trans  &kp N0  &trans  &kp C_MUTE &trans           &trans  &trans           &trans  &trans   &trans   &trans
+&kp ESC  &kp N1  &kp N2  &kp N3  &kp F2                                &trans  &trans  &trans  &trans  &trans
+&kp TAB  &kp N4  &kp N5  &kp N6  &kp F10                               &trans  &trans  &trans  &trans  &trans
+&trans   &kp N7  &kp N8  &kp N9  &kp F5      &trans            &trans  &trans  &trans  &trans  &trans  &trans
+&trans   &trans  &kp N0  &trans  &kp C_MUTE  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 EXTRA_TRANS
             >;
         };
 
+        /* Left thumb layer: frequently used symbols are on the right hand. */
         layer_3 {
             display-name = "Sym";
             bindings = <
-&trans       &kp EXCL  &kp HASH  &kp DOLLAR  &kp AMPS                      &kp LBKT  &kp RBKT  &kp LBRC   &kp RBRC  &kp TILDE
-&kp LS(TAB)  &kp DQT   &kp SQT   &kp GRAVE   &kp QMARK                      &kp LPAR  &kp RPAR  &kp MINUS  &kp AT    &kp SEMI
-&kp LSHFT    &trans    &kp PIPE  &trans      &trans     &trans      &trans  &kp LT    &kp GT    &kp UNDER  &kp BSLH  &kp COLON
-&trans       &trans    &trans    &trans      &trans     &trans      &trans  &trans    &trans    &trans     &trans    &trans
+&kp AT    &kp HASH   &kp PRCNT  &kp CARET  &kp AMPS                         &kp EXCL   &kp LBKT  &kp RBKT  &kp TILDE  &kp DOLLAR
+&kp LBRC  &kp RBRC   &kp EQUAL  &kp PLUS   &kp STAR                         &kp MINUS  &kp LPAR  &kp RPAR  &kp UNDER  &kp DQT
+&kp BSLH  &kp COLON  &kp GRAVE  &trans     &trans    &trans         &trans  &kp PIPE   &kp LT    &kp GT    &kp SQT    &kp QMARK
+&trans    &trans     &trans     &trans     &trans    &trans         &trans  &trans     &trans    &trans    &trans     &trans
 EXTRA_TRANS
             >;
         };
 
+        /* Left thumb layer: navigation, screenshots and Bluetooth are on the right hand. */
         layer_4 {
             display-name = "Nav";
             bindings = <
-&trans     &kp LC(LA(V))  &kp LG(LS(N3))  &kp LG(LS(N4))  &trans                               &kp LC(LEFT)  &kp LC(DOWN)  &kp LC(UP)   &kp LC(RIGHT)  &trans
-&kp LG(A)  &kp LG(X)      &kp LG(C)       &kp LG(V)       &kp END                              &kp LEFT      &kp DOWN      &kp UP       &kp RIGHT      &trans
-&trans     &trans         &kp LG(Z)       &kp LG(Y)       &trans   &trans             &trans   &out OUT_USB  &out OUT_BLE  &bt BT_PRV   &bt BT_NXT     &tog WIN
-&trans     &trans         &trans          &trans          &trans   &trans             &trans   &trans        &trans        &trans       &trans         &trans
-EXTRA_TRANS
-            >;
-        };
-
-        /* Toggled by &tog WIN. Swaps Mac modifiers for Windows ones; everything else falls through. */
-        layer_5 {
-            display-name = "Win";
-            bindings = <
-&trans    &trans     &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans    &trans     &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans    &trans     &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&kp LGUI  &kp LCTRL  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &kp RCTRL
-EXTRA_TRANS
-            >;
-        };
-
-        /* Windows equivalents of the NAV layer shortcuts (activated by conditional_layers). */
-        layer_6 {
-            display-name = "WinNav";
-            bindings = <
-&trans     &kp LG(V)  &kp PSCRN  &kp LG(LS(S))  &trans                     &kp LG(LC(LEFT))  &kp LG(TAB)  &kp LG(TAB)  &kp LG(LC(RIGHT))  &trans
-&kp LC(A)  &kp LC(X)  &kp LC(C)  &kp LC(V)      &trans                     &trans            &trans       &trans       &trans             &trans
-&trans     &trans     &kp LC(Z)  &kp LC(Y)      &trans  &trans     &trans  &trans            &trans       &trans       &trans             &trans
-&trans     &trans     &trans     &trans         &trans  &trans     &trans  &trans            &trans       &trans       &trans             &trans
+&kp TAB    &trans     &trans     &trans     &trans                         &kp LC(LEFT)  &kp LC(DOWN)  &kp LC(UP)    &kp LC(RIGHT)  &kp LG(LS(N4))
+&kp LG(A)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp END                        &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT      &kp LG(LS(N3))
+&trans     &trans     &kp LG(Z)  &kp LG(Y)  &trans   &trans        &trans  &out OUT_USB  &out OUT_BLE  &bt BT_PRV    &bt BT_NXT     &trans
+&trans     &trans     &trans     &trans     &trans   &trans        &trans  &kp DEL       &trans        &trans        &trans         &trans
 EXTRA_TRANS
             >;
         };
