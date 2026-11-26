@@ -124,8 +124,8 @@ EXTRA_TRANS
         layer_4 {
             display-name = "Nav";
             bindings = <
-&kp TAB    &trans     &trans     &trans     &trans                         &kp LC(LEFT)  &kp LC(DOWN)  &kp LC(UP)    &kp LC(RIGHT)  &kp LG(LS(N4))
-&kp LG(A)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp END                        &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT      &kp LG(LS(N3))
+&kp ESC    &trans     &trans     &trans     &trans                         &kp LC(LEFT)  &kp LC(DOWN)  &kp LC(UP)    &kp LC(RIGHT)  &kp LG(LS(N4))
+&kp TAB    &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp END                        &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT      &kp LG(LS(N3))
 &trans     &trans     &kp LG(Z)  &kp LG(Y)  &trans   &trans        &trans  &out OUT_USB  &out OUT_BLE  &bt BT_PRV    &bt BT_NXT     &trans
 &trans     &trans     &trans     &trans     &trans   &trans        &trans  &kp DEL       &trans        &trans        &trans         &trans
 EXTRA_TRANS
